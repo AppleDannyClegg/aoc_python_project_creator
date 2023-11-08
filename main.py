@@ -1,6 +1,5 @@
 import os
 import shutil
-import requests
 import argparse
 
 from aoc_utils import get_puzzle_data
@@ -24,13 +23,10 @@ def create_aoc_project(destination_directory: str, day: int, year: int, delete: 
     touch(destination_directory + '/tests', ["__init__.py"])
     touch(destination_directory, ["puzzle_data_example.txt"])
 
-    shutil.copy("./templates/test.sh", destination_directory)
-    shutil.copy("./templates/test_pytest.py", destination_directory + "/tests")
-
+    render_template("./templates/test_pytest.py", destination_directory + "/tests", [])
+    render_template("./templates/test.sh", destination_directory, [])
     render_template("./templates/pyproject.toml", destination_directory, [["%name%", f"\"day{day}\""]])
-    render_template("./templates/day.py", destination_directory + "/src", [["%day%", f"day{day}"]])
-
-    os.rename(f"{destination_directory}/src/day.py", f"{destination_directory}/src/day{day}.py")
+    render_template("./templates/day.py", destination_directory + f"/src/day{day}.py", [["%day%", f"day{day}"]])
 
     puzzle_data = get_puzzle_data(year=year, day=1)
 

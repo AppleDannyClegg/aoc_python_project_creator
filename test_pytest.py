@@ -6,12 +6,12 @@ from main import create_aoc_project
 
 
 def test_create_day1():
-    create_aoc_project("./aoc", day=1, year=2018, delete=True)
-    assert os.path.exists("./aoc/day1")
-    assert os.path.exists("./aoc/day1/tests")
-    assert os.path.exists("./aoc/day1/src")
-    assert os.path.exists("./aoc/day1/src/__init__.py")
-    assert os.path.exists("./aoc/day1/tests/__init__.py")
+    create_aoc_project("./_aoc", day=1, year=2018, delete=True)
+    assert os.path.exists("./_aoc/day1")
+    assert os.path.exists("./_aoc/day1/tests")
+    assert os.path.exists("./_aoc/day1/src")
+    assert os.path.exists("./_aoc/day1/src/__init__.py")
+    assert os.path.exists("./_aoc/day1/tests/__init__.py")
 
 
 def test_mkdirs():
@@ -63,8 +63,6 @@ def test_render_template():
     os.remove(f"{base_path}/pyproject.toml")
     os.rmdir(base_path)
 
-
-# create test for get_puzzle_data
 
 def test_get_puzzle_data():
     puzzle_data = get_puzzle_data(year=2018, day=1)

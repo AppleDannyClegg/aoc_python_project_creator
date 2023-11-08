@@ -1,4 +1,5 @@
 import os
+import shutil
 
 
 # create test for mkdirs
@@ -15,13 +16,20 @@ def touch(base_dpath: str, files: []):
 
 
 def render_template(template_path, output_directory, search_replace: []):
-    for search, replace in search_replace:
-        with open(template_path, 'r') as file:
-            filedata = file.read()
+    if len(search_replace) == 0:
+        shutil.copy(template_path, output_directory)
+    else:
+        for search, replace in search_replace:
+            with open(template_path, 'r') as file:
+                filedata = file.read()
 
-        filename = os.path.basename(template_path)
+            if os.path.isdir(output_directory):
+                filename = os.path.basename(template_path)
+                output_path = output_directory + "/" + filename
+            else:
+                output_path = output_directory
 
-        updated_content = filedata.replace(search, replace)
+            updated_content = filedata.replace(search, replace)
 
-        with open(output_directory + "/" + filename, 'w') as file:
-            file.write(updated_content)
+            with open(output_path, 'w') as file:
+                file.write(updated_content)
