@@ -21,8 +21,9 @@ python main.py --day 10 --year 2021 --destination "~/projects/git/day10" --delet
 
 ### Requirements:
 
-- Python 3.12
-- [Poetry](https://python-poetry.org/docs/#installation)
+- Python 3.12 - [Python](https://www.python.org/downloads/)
+- Requests library - [Requests](https://docs.python-requests.org/en/latest/user/install/#install)
+- Poetry - [Poetry](https://python-poetry.org/docs/#installation)
 - Need to set AOC_SESSION environment variable to your session cookie from the [Advent of Code](https://adventofcode.com/) website. You can find this in your browser's dev tools
   under the Application tab. It's called `session` and is under the Cookies section.
 - https://github.com/wimglenn/advent-of-code-wim/issues/1
