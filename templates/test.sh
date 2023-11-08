@@ -1,0 +1,1 @@
+nodemon -w tests -w src --ext '*.py'  --exec pytest --capture=no
