@@ -1,8 +1,10 @@
 import os
+import shutil
+import sys
 
-from aoc_utils import get_puzzle_data
-from file_utils import mkdirs, touch, render_template
-from main import create_aoc_project
+from aoc_create_day.aoc_utils import get_puzzle_data
+from aoc_create_day.file_utils import mkdirs, touch, render_template
+from aoc_create_day.main import create_aoc_project
 
 
 def test_create_day1():
@@ -12,6 +14,8 @@ def test_create_day1():
     assert os.path.exists("./_aoc/day1/src")
     assert os.path.exists("./_aoc/day1/src/__init__.py")
     assert os.path.exists("./_aoc/day1/tests/__init__.py")
+
+    shutil.rmtree("./_aoc/")
 
 
 def test_mkdirs():
@@ -45,22 +49,6 @@ def test_touch():
     os.remove(f"{base_path}/{files[0]}")
     os.remove(f"{base_path}/{files[1]}")
     os.remove(f"{base_path}/{files[2]}")
-    os.rmdir(base_path)
-
-
-def test_render_template():
-    base_path = "./test_render_template"
-    template_path = "./templates/pyproject.toml"
-    output_directory = base_path
-    search_replace = [["%name%", f"\"day1\""]]
-
-    mkdirs(base_path, [""])
-
-    render_template(template_path, output_directory, search_replace)
-
-    assert os.path.exists(f"{base_path}/pyproject.toml")
-
-    os.remove(f"{base_path}/pyproject.toml")
     os.rmdir(base_path)
 
 

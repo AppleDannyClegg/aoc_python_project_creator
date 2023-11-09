@@ -13,7 +13,5 @@ def get_puzzle_data(year: int, day: int):
 
     http_response = requests.get(fetch_url, cookies={"session": session_cookie})
 
-    print(http_response.status_code)
-
     if http_response.status_code == 200:
         return http_response.text
