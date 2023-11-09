@@ -13,8 +13,8 @@ def touch(base_dpath: str, files: []):
 
 
 def render_template(template_path, output_directory, search_replace: []):
-    current_path = os.path.dirname(__file__)
-    template_path = current_path + template_path
+    running_path = os.path.dirname(__file__)
+    template_path = running_path + template_path
     output_directory = os.path.join(os.path.dirname(__file__), output_directory)
 
     if len(search_replace) == 0:
